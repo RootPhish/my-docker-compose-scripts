@@ -1,0 +1,24 @@
+---
+version: "2"
+services:
+  unifi-controller:
+    image: linuxserver/unifi-controller
+    container_name: unifi-controller
+    environment:
+      - PUID=911
+      - PGID=911
+    volumes:
+      - /data/docker/unifi:/config
+    ports:
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8443:8443
+      - 8843:8843
+      - 8880:8880
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: my_bridge
