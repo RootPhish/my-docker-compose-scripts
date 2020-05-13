@@ -1,0 +1,19 @@
+---
+version: "3.5"
+services:
+  ethereum-node:
+    image: ethereum/client-go
+    container_name: ethereum-node
+    volumes:
+      - /data/docker/eth:/root
+    ports:
+      - 8545:8545
+      - 30303:30303
+    restart: unless-stopped
+    entrypoint: geth --syncmode light
+
+networks:
+  default:
+    external:
+      name: my_bridge
+

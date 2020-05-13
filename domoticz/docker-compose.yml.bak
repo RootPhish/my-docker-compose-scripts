@@ -1,6 +1,16 @@
 ---
 version: "3.5"
 services:
+  ikea-tradfri-plugin:
+    image: matrixus/ikea-tradfri-plugin
+    container_name: ikea-tradfri-plugin
+    environment:
+      - GW_IP=192.168.2.123
+      - GW_PSK=8Ee95NsKjncaXpmx
+    ports:
+      - 1234:1234
+    restart: unless-stopped
+
   domoticz:
     image: linuxserver/domoticz
     container_name: domoticz
